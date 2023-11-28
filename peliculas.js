@@ -107,24 +107,24 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 //Variable numero para saber el numero de ratings que tiene la pelicula
                 var numero=data.Ratings.length;
-                if(numero>1){
+                //Los ratings son diferentes para cada pelicula los muestra segun los que tenga cada una
+                if(numero==1){
                     movieDetail.innerHTML = `
                     <h2>${data.Title}</h2>
                     <p><strong>Director:</strong> ${data.Director}</p>
                     <p><strong>Actores:</strong> ${data.Actors}</p>
                     <p><strong>Sinopsis:</strong> ${data.Plot}</p>
-                    <p><strong>Ratings:</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value} <br>  
-                    ${data.Ratings[1].Source} ${data.Ratings[1].Value}</p>
+                    <p><strong>Ratings:a</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value}</p>
                     <img src="${data.Poster}" alt="${data.Title}" onerror="this.onerror=null; this.src='default-image.jpg';">
                 `;
-                }else if(numero>=2){
+                }else if(numero==2){
                     movieDetail.innerHTML = `
                     <h2>${data.Title}</h2>
                     <p><strong>Director:</strong> ${data.Director}</p>
                     <p><strong>Actores:</strong> ${data.Actors}</p>
                     <p><strong>Sinopsis:</strong> ${data.Plot}</p>
-                    <p><strong>Ratings:</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value} <br>  
-                    ${data.Ratings[1].Source} ${data.Ratings[1].Value} ${data.Ratings[2].Source} ${data.Ratings[2].Value}</p>
+                    <p><strong>Ratings:ss</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value}
+                    ${data.Ratings[1].Source} ${data.Ratings[1].Value}</p>
                     <img src="${data.Poster}" alt="${data.Title}" onerror="this.onerror=null; this.src='default-image.jpg';">
                 `;
                 }
@@ -134,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p><strong>Director:</strong> ${data.Director}</p>
                     <p><strong>Actores:</strong> ${data.Actors}</p>
                     <p><strong>Sinopsis:</strong> ${data.Plot}</p>
-                    <p><strong>Ratings:</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value}</p>
+                    <p><strong>Ratings:a</strong> ${data.Ratings[0].Source} ${data.Ratings[0].Value}<br>
+                    ${data.Ratings[1].Source} ${data.Ratings[1].Value} <br>${data.Ratings[2].Source} ${data.Ratings[2].Value}</p>
                     <img src="${data.Poster}" alt="${data.Title}" onerror="this.onerror=null; this.src='default-image.jpg';">
                 `;
                 }
