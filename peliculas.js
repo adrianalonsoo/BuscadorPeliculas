@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchMovies(currentSearch, currentPage);
     }); */
 
+    //Evento para realizar el scroll infinito
     window.addEventListener('scroll', ()=> {
         if(!movieDetail.classList.contains('d-none')){
             return;
@@ -47,20 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchMovies(currentSearch, currentPage);  
         } 
     });
-
-    /*
-    window.addEventListener('scroll',scrollinfinito);
-
-    function scrollinfinito(){
-
-        let scrollHeight=document.documentElement.scrollHeight;
-        let scrollTop=document.documentElement.scrollTop;
-        let clientHeight=document.documentElement.clientHeight;
-
-        if((scrollTop+clientHeight) > (scrollHeight-10))
-            fetchMovies(currentSearch, currentPage++)
-    }
-    */
 
     //Evento para volver a la pantalla principal
     backButton.addEventListener('click', function() {
@@ -84,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
             })
+            //Capturar errores    
             .catch(error => {
                 console.error('Error:', error);
             });
@@ -96,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             searchRespuesta.classList.remove('d-none');
             const movieElement = document.createElement('div');
             movieElement.className = 'col-md-4 mb-3';
+            //Poner los elementos de las peliculas en el html
             movieElement.innerHTML = `
                 <div class="card">
                     <img src="${movie.Poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='default-image.jpg';">
@@ -117,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
+                //Variable numero para saber el numero de ratings que tiene la pelicula
                 var numero=data.Ratings.length;
                 if(numero>1){
                     movieDetail.innerHTML = `
@@ -153,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 movieDetail.classList.remove('d-none');
                 document.getElementById('search-results').classList.add('d-none');
             })
+            //Capturar errores
             .catch(error => {
                 console.error('Error:', error);
             });
