@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${data.Ratings[1].Source} ${data.Ratings[1].Value}</p>
                     <img src="${data.Poster}" alt="${data.Title}" onerror="this.onerror=null; this.src='default-image.jpg';">
                 `;
-                }else if(numero>2){
+                }else if(numero>=2){
                     movieDetail.innerHTML = `
                     <h2>${data.Title}</h2>
                     <p><strong>Director:</strong> ${data.Director}</p>
